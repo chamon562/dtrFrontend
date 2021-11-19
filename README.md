@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# Backend issue
+1. // TODO FIX USER BEING ABLE TO REGISTER SAME FRIEND ID AND EMAIL
+// THE ERROR IS NOT GOING OFF WHEN DB IS FINDONE BY EMAIL OR FRIEND ID 
+// Should be if the user exist they cannot create a new user
+- fixed to where the user can search by friendId
+```js
+router.get("/path/:friendId", (req, res) => {
+ // figured out how to have the user be able to place a friendId to locatea player
+  // before i was doing {friendId}
+  // and trying parseInt because the error kept saying value is a string
+  // then i realized by going here that app.get('/path/:friendId', function(req, res) {
+  //   res.send("tagId is set to " + req.params.friendId);
+  // }); sent back the response of the friendId i put in the url
+  // it made me understand that the {friendId} i was using before in db.User.findOne
+  // may have not been getting a value to pass in it so it didnt know?
+  // router.get() has to have /path/:friendId and db.User.findOne(friendId: req.params.friendId)
+  // friendId had to be defined so that was defined with req.params.friendId
+  //Postman http://localhost:8000/api/users/path/179940588
+  db.User.findOne({friendId: req.params.friendId})
+    .then((user) =>{
+      res.send(user)
+    })
+    .catch((error) => {
+      console.log("Error: ", error);
+    });
+});
+```
+# code save
+- backend/routes/users.js
+    - register route save later
+    ```js
+     const friendIdExist = db.User.findOne({friendId: req.body.friendId})
+  if(friendIdExist){
+    return res.status(400).json("Someone has already registered this Friend ID, are you sure this ID belongs")
+  }
+    ```
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
