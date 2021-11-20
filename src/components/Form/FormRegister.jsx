@@ -6,7 +6,7 @@ const FormRegister = () => {
   // if after hitting the submit and it refreshes use the e.preventDefault
   // destructure the values from useForm
   // and keep it blank for now
-  const { handleChange, handleSubmit, values } = useForm();
+  const { handleChange, handleSubmit, errors, values } = useForm();
   return (
     <div className="form-content-right">
       <form className="form" onSubmit={handleSubmit}>
@@ -27,7 +27,7 @@ const FormRegister = () => {
             value={values.friendId}
             onChange={handleChange}
           />
-          {errors.friendId &&}
+          {errors.friendId && <p>{errors.friendId}</p>}
         </div>
         <div className="form-inputs">
           <label htmlFor="username" className="form-label">

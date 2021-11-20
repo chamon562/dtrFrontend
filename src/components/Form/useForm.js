@@ -1,5 +1,6 @@
 // custom hooks, start with useThenWhatever
 import { useState, useEffect } from "react";
+import validateInfo from "../validateInfo/validateInfo";
 
 const useForm = (validate) => {
   // set up our value
@@ -30,7 +31,7 @@ const useForm = (validate) => {
     e.preventDefault();
     // this is where I want to display the values of validateInfo
     // pass validate as a parameter in the useForm function and set the state of Errors take validate function and set the values that I had added 
-    setErrors(validate(values))
+    setErrors(validateInfo(values))
   };
 
   return { handleChange, handleSubmit, errors, values };
