@@ -58,6 +58,10 @@ const FormRegister = () => {
             placeholder="Enter your password2"
           />
         </div>
+        <button className="form-input-btn" type="subnmit">Sign up</button>
+        <span className="form-input-login">
+            Already have an account? Login <a href="#">here</a>
+        </span>
       </form>
     </div>
   );
