@@ -27,6 +27,7 @@ const FormRegister = () => {
             value={values.friendId}
             onChange={handleChange}
           />
+          {errors.friendId &&}
         </div>
         <div className="form-inputs">
           <label htmlFor="username" className="form-label">

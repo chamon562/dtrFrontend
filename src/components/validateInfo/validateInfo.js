@@ -2,6 +2,9 @@ import React from "react";
 
 const validateInfo = (values) => {
   let errors = {};
+  if (!values.friendId) {
+    errors.friendId = "Friend Id is required";
+  }
   if (!values.username.trim()) {
     // if values.username is not true
     errors.username = "Username  required";
@@ -24,7 +27,7 @@ const validateInfo = (values) => {
     //   if confirmed password does not match the original password
     errors.password2 = "Passwords do not match";
   }
-  return errors
+  return errors;
 };
 
 export default validateInfo;
