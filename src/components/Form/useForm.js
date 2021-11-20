@@ -2,8 +2,11 @@
 import { useState, useEffect } from "react";
 
 const useForm = () => {
+    // if after hitting the submit and it refreshes use the e.preventDefault
+
   // set up our value
   const [values, setValues] = useState({
+    friendId: "",
     username: "",
     email: "",
     password: "",
@@ -24,7 +27,7 @@ const useForm = () => {
 
     setValues({ ...values, [name]: value });
   };
-  return { handleChange };
+  return { handleChange, values };
 };
 
 export default useForm;
