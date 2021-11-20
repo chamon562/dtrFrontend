@@ -48,18 +48,13 @@ const Home = (props) => {
         />
         <TextField onClick={callSearch} value="SEARCH"  type="submit" />
       </form>
-      {searchValue === false ? <div> 
-        <h1>Player name: {}</h1>
-        <h1>Player Rank: ....</h1>
-          </div> : <h1></h1>} 
+     
           
     
     </div>
   );
 
-  //   return (
-  //
-  //   );
+
 };
 
 export default Home;

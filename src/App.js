@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import Home from "./components/Pages/Home";
 import axios from "axios";
+import Form from "./components/Form/Form";
 
 function App() {
   const [searchData, setSearchData] = useState([]);
@@ -17,11 +18,12 @@ function App() {
   };
   return (
     <div>
+      <Form />
       <Home search={search} />
       {/* if the searchValue is blank send back friend id not found maybe else return the user info */}
 
-      {<h1>{search.name}</h1>}
-      {<h1>{search.turboRank}</h1>}
+      {<h1>{searchData.name}</h1>}
+      {searchData.turboRank ?<h1>Turbo Rating: {searchData.turboRank}</h1> :(!searchData) ? <h1>This Person does not have a Rank turbo account.</h1> : <div></div>}
     </div>
   );
 }

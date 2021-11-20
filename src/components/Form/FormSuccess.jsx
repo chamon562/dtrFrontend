@@ -1,0 +1,1 @@
+// the logo that says we receive success
