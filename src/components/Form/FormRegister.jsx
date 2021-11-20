@@ -6,10 +6,10 @@ const FormRegister = () => {
   // if after hitting the submit and it refreshes use the e.preventDefault
   // destructure the values from useForm
   // and keep it blank for now
-  const { handleChange, values } = useForm();
+  const { handleChange, handleSubmit, values } = useForm();
   return (
     <div className="form-content-right">
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit}>
         <h1>
           Get started with us today! Create your account by filling out the info
           below.
