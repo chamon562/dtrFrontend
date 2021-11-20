@@ -30,7 +30,7 @@ const useForm = (validate) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // this is where I want to display the values of validateInfo
-    // pass validate as a parameter in the useForm function and set the state of Errors take validate function and set the values that I had added 
+    // pass validateInfo as a parameter in the useForm function and set the state of Errors take validate function and set the values that I had added 
     setErrors(validateInfo(values))
   };
 

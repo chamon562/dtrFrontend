@@ -27,6 +27,10 @@ const FormRegister = () => {
             value={values.friendId}
             onChange={handleChange}
           />
+          {/* little trick I learned when useing the && sign it says that
+          if errors.friendId is true then its going to return whatever I pass after that
+          which is the p tag.
+           */}
           {errors.friendId && <p>{errors.friendId}</p>}
         </div>
         <div className="form-inputs">
@@ -42,6 +46,7 @@ const FormRegister = () => {
             value={values.username}
             onChange={handleChange}
           />
+          {errors.username && <p>{errors.username}</p>}
         </div>
         <div className="form-inputs">
           <label htmlFor="email" className="form-label">
@@ -56,6 +61,7 @@ const FormRegister = () => {
             value={values.email}
             onChange={handleChange}
           />
+          {errors.email && <p>{errors.email}</p>}
         </div>
         <div className="form-inputs">
           <label htmlFor="password" className="form-label">
@@ -70,6 +76,7 @@ const FormRegister = () => {
             value={values.password}
             onChange={handleChange}
           />
+          {errors.password && <p>{errors.password}</p>}
         </div>
         <div className="form-inputs">
           <label htmlFor="password2" className="form-label">
@@ -84,6 +91,7 @@ const FormRegister = () => {
             value={values.password2}
             onChange={handleChange}
           />
+          {errors.password2 && <p>{errors.password2}</p>}
         </div>
         <button className="form-input-btn" type="submit">
           Sign up
