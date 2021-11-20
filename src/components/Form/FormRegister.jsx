@@ -2,6 +2,8 @@ import React from "react";
 // import useForm custome hook
 import useForm from "./useForm";
 import validateInfo from "../validateInfo/validateInfo"
+import "./Form.css"
+
 const FormRegister = () => {
   // if after hitting the submit and it refreshes use the e.preventDefault
   // destructure the values from useForm

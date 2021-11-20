@@ -1,0 +1,7 @@
+/*
+what target the input in the form and the p tag
+grab it by the className of the div .form-inputs and p tag  */
+
+.form-inputs p {
+  color: red;
+}
