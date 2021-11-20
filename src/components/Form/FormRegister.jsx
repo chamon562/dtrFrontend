@@ -9,6 +9,16 @@ const FormRegister = () => {
           below.
         </h1>
         <div className="form-inputs">
+          <label htmlFor="friendId" className="form-label">Dota 2 friendId</label>
+          <input
+          id="friendId"
+            type="text"
+            name="friendId"
+            className="form-input"
+            placeholder="Enter your friendId"
+          />
+        </div>
+        <div className="form-inputs">
           <label htmlFor="username" className="form-label">Username</label>
           <input
           id="username"
@@ -26,6 +36,26 @@ const FormRegister = () => {
             name="username"
             className="form-input"
             placeholder="Enter your email"
+          />
+        </div>
+        <div className="form-inputs">
+          <label htmlFor="password" className="form-label">Password</label>
+          <input
+          id="password"
+            type="password"
+            name="username"
+            className="form-input"
+            placeholder="Enter your password"
+          />
+        </div>
+        <div className="form-inputs">
+          <label htmlFor="password2" className="form-label">Confirm Password</label>
+          <input
+          id="password2"
+            type="password2"
+            name="username"
+            className="form-input"
+            placeholder="Enter your password2"
           />
         </div>
       </form>
