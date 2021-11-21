@@ -4,11 +4,11 @@ import useForm from "./useForm";
 import validateInfo from "../validateInfo/validateInfo"
 import "./Form.css"
 
-const FormRegister = () => {
+const FormRegister = ({submitForm}) => {
   // if after hitting the submit and it refreshes use the e.preventDefault
   // destructure the values from useForm
   // and keep it blank for now
-  const { handleChange, handleSubmit, errors, values } = useForm();
+  const { handleChange, handleSubmit, errors, values } = useForm(submitForm, validateInfo);
   return (
     <div className="form-content-right">
       <form className="form" onSubmit={handleSubmit}>
@@ -89,14 +89,14 @@ const FormRegister = () => {
             type="password"
             name="password2"
             className="form-input"
-            placeholder="Enter your password2"
+            placeholder="Please type in your password again to confirm"
             value={values.password2}
             onChange={handleChange}
           />
           {errors.password2 && <p>{errors.password2}</p>}
         </div>
-        <button className="form-input-btn" type="submit">
-          Sign up
+        <button  className="form-input-btn reg" type="submit">
+          <span >Sign Up</span>
         </button>
         <span className="form-input-login">
           Already have an account? Login <a href="#">here</a>

@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import validateInfo from "../validateInfo/validateInfo";
 
-const useForm = (validate) => {
+const useForm = (callback,validateInfo) => {
   // set up our value
   const [values, setValues] = useState({
     friendId: "",
@@ -15,6 +15,8 @@ const useForm = (validate) => {
   // set it to an empty object
   const [errors, setErrors] = useState({});
 
+  // set to false because its not submitted yet
+  const [isSubmitting, setIsSubmitting] = useState(false)
   // whenever i change something want this to update the values
   // handleChange function that
 
@@ -32,8 +34,19 @@ const useForm = (validate) => {
     // this is where I want to display the values of validateInfo
     // pass validateInfo as a parameter in the useForm function and set the state of Errors take validate function and set the values that I had added 
     setErrors(validateInfo(values))
+    // underneath handle submit lets create a state for 
+    // once submitted setIsSubmitted to true 
+    // this will be used for a function that will let us see that the submit is successful or not
+    setIsSubmitting(true);
   };
-
+  useEffect(() =>{
+    // if there is zero errors then return isSubmitting
+    if(Object.keys(errors).length === 0 && isSubmitting){
+      // run call back function
+      callback()
+    }
+    // only want it to trigger when it updates the error
+  },[errors])
   return { handleChange, handleSubmit, errors, values };
 };
 
