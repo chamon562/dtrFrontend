@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import Home from "./components/Pages/Home";
 import axios from "axios";
-import Form from "./components/Form/Form";
+import ModalForm from "./components/Modal/ModalForm"
 
 function App() {
   const [searchData, setSearchData] = useState([]);
@@ -23,7 +23,8 @@ function App() {
 
       {<h1>{searchData.name}</h1>}
       {searchData.turboRank ?<h1>Turbo Rating: {searchData.turboRank}</h1> :(!searchData) ? <h1>This Person does not have a Rank turbo account.</h1> : <div></div>}
-      <Form />
+      {/* <Form /> */}
+      <ModalForm />
     </div>
   );
 }

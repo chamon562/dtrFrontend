@@ -21,6 +21,11 @@ grab it by the className of the div .form-inputs and p tag  */
   z-index: 1;
   color: #fff;
   cursor: pointer;
+  transition: all .5s ease-in-out;
+}
+.close-btn:hover {
+  color:rgb(8, 231, 64);
+  transform: scale(1.04);
 }
 
 .form-content-left {
@@ -35,7 +40,7 @@ grab it by the className of the div .form-inputs and p tag  */
 
 .form-img {
   width: 90%;
-  height: 90%;
+  height: 80%;
   position: absolute;
   top: 50%;
   left: 50%;

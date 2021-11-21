@@ -4,7 +4,7 @@ import useForm from "./useForm";
 import validateInfo from "../validateInfo/validateInfo"
 import "./Form.css"
 
-const FormRegister = ({submitForm}) => {
+const FormRegister = ({submitForm, handleClose}) => {
   // if after hitting the submit and it refreshes use the e.preventDefault
   // destructure the values from useForm
   // and keep it blank for now

@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import FormRegister from "./FormRegister";
 import FormSucess from "./FormSuccess";
 import "./Form.css";
+import CloseIcon from '@mui/icons-material/Close';
 
-const Form = () => {
+const Form = (props) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   // this is the function taht will set isSubmitted to true
   function submitForm() {
@@ -14,7 +15,7 @@ const Form = () => {
   return (
     <>
       <div className="form-container">
-        <span className="close-btn">x</span>
+        <span className="close-btn" onClick={props.handleClose}><CloseIcon /></span>
         <div className="form-content-left">
           <img
             className="form-img"
@@ -24,9 +25,9 @@ const Form = () => {
         </div>
         {/* <FormRegister /> */}
         {!isSubmitted ? (
-          <FormRegister submitForm={submitForm} />
+          <FormRegister handleClose={props.handleClose} submitForm={submitForm} />
         ) : (
-          <FormSucess />
+          <FormSucess handleClose={props.handleClose}/>
         )}
       </div>
     </>
