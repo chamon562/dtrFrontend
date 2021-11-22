@@ -5,9 +5,9 @@ const validateInfo = (values) => {
   if (!values.friendId) {
     errors.friendId = "Friend Id is required";
   }
-  if (!values.username.trim()) {
-    // if values.username is not true
-    errors.username = "Username  required";
+  if (!values.name.trim()) {
+    // if values.name is not true
+    errors.name = "Name  required";
   }
   if (!values.email.trim()) {
     errors.email = "Email required";

@@ -18,13 +18,13 @@ function App() {
   };
   return (
     <div>
-      <Home search={search} />
+      <ModalForm />
+      {/* {<h1>{searchData.name}</h1>}
+      {searchData.turboRank ?<h1>Turbo Rating: {searchData.turboRank}</h1> :(!searchData) ? <h1>This Person does not have a Rank turbo account.</h1> : <div></div>} */}
+      <Home search={search} searchData={searchData}/>
       {/* if the searchValue is blank send back friend id not found maybe else return the user info */}
 
-      {<h1>{searchData.name}</h1>}
-      {searchData.turboRank ?<h1>Turbo Rating: {searchData.turboRank}</h1> :(!searchData) ? <h1>This Person does not have a Rank turbo account.</h1> : <div></div>}
       {/* <Form /> */}
-      <ModalForm />
     </div>
   );
 }

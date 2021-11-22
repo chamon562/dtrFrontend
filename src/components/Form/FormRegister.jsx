@@ -36,19 +36,19 @@ const FormRegister = ({submitForm, handleClose}) => {
           {errors.friendId && <p>{errors.friendId}</p>}
         </div>
         <div className="form-inputs">
-          <label htmlFor="username" className="form-label">
-            Username
+          <label htmlFor="name" className="form-label">
+            name
           </label>
           <input
-            id="username"
+            id="name"
             type="text"
-            name="username"
+            name="name"
             className="form-input"
-            placeholder="Enter your username"
-            value={values.username}
+            placeholder="Enter your name"
+            value={values.name}
             onChange={handleChange}
           />
-          {errors.username && <p>{errors.username}</p>}
+          {errors.name && <p>{errors.name}</p>}
         </div>
         <div className="form-inputs">
           <label htmlFor="email" className="form-label">
