@@ -1,4 +1,12 @@
-import { Backdrop, Button, Fade, IconButton } from "@mui/material";
+import {
+  Backdrop,
+  Button,
+  Fade,
+  IconButton,
+  MenuItem,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import Modal from "@mui/material/Modal";
 import { Box } from "@mui/system";
 
@@ -29,7 +37,9 @@ const ModalForm = () => {
   };
   return (
     <>
-      <Button onClick={handleOpen}>Register</Button>
+      <Button sx={{ color: "#fff" }} onClick={handleOpen}>
+        <Typography>Sign Up</Typography>
+      </Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -39,8 +49,7 @@ const ModalForm = () => {
         BackdropProps={{ timeout: 500 }}
       >
         <Fade in={open}>
-          <Box sx={{color:"#fff"}}>
-            Register
+          <Box>
             <Form handleClose={handleClose} />
           </Box>
         </Fade>

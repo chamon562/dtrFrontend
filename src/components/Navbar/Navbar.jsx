@@ -1,4 +1,4 @@
-import { AppBar, IconButton, Menu, MenuItem, Toolbar } from "@mui/material";
+import { AppBar, Button, IconButton, Menu, MenuItem, Toolbar, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import PetsIcon from "@mui/icons-material/Pets";
@@ -17,8 +17,11 @@ const Navbar = () => {
           >
             <PetsIcon />
           </IconButton>
-          <ModalForm />
-          
+          {/* <ModalForm /> */}
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            News
+          </Typography>
+          <ModalForm/>
         </Toolbar>
       </AppBar>
     </Box>
