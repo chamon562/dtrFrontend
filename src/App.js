@@ -3,6 +3,7 @@ import "./App.css";
 import Home from "./components/Pages/Home";
 import axios from "axios";
 import ModalForm from "./components/Modal/ModalForm"
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   const [searchData, setSearchData] = useState([]);
@@ -18,7 +19,8 @@ function App() {
   };
   return (
     <div>
-      <ModalForm />
+      <Navbar />
+      {/* <ModalForm /> */}
       {/* {<h1>{searchData.name}</h1>}
       {searchData.turboRank ?<h1>Turbo Rating: {searchData.turboRank}</h1> :(!searchData) ? <h1>This Person does not have a Rank turbo account.</h1> : <div></div>} */}
       <Home search={search} searchData={searchData}/>

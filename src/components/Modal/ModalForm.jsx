@@ -1,4 +1,4 @@
-import { Backdrop, Button, Fade } from "@mui/material";
+import { Backdrop, Button, Fade, IconButton } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import { Box } from "@mui/system";
 
@@ -39,9 +39,9 @@ const ModalForm = () => {
         BackdropProps={{ timeout: 500 }}
       >
         <Fade in={open}>
-          <Box >
-
-          <Form handleClose={handleClose} />
+          <Box sx={{color:"#fff"}}>
+            Register
+            <Form handleClose={handleClose} />
           </Box>
         </Fade>
       </Modal>
