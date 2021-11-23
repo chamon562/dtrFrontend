@@ -4,6 +4,7 @@ import Home from "./components/Pages/Home";
 import axios from "axios";
 import ModalForm from "./components/Modal/ModalForm"
 import Navbar from "./components/Navbar/Navbar";
+import FormLogin from "./components/Form/FormLogin";
 
 function App() {
   const [searchData, setSearchData] = useState([]);
@@ -25,7 +26,7 @@ function App() {
       {searchData.turboRank ?<h1>Turbo Rating: {searchData.turboRank}</h1> :(!searchData) ? <h1>This Person does not have a Rank turbo account.</h1> : <div></div>} */}
       <Home search={search} searchData={searchData}/>
       {/* if the searchValue is blank send back friend id not found maybe else return the user info */}
-
+      {/* <FormLogin/> */}
       {/* <Form /> */}
     </div>
   );

@@ -39,12 +39,12 @@ grab it by the className of the div .form-inputs and p tag  */
 }
 
 .form-img {
-  width: 90%;
-  height: 80%;
+  width: 100%;
+  height: 100%;
   position: absolute;
   top: 50%;
   left: 50%;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   transform: translate(-50%, -50%);
 }
 

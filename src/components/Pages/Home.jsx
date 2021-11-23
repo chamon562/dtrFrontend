@@ -9,6 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
+import FormLogin from "../Form/FormLogin";
 
 const Home = (props) => {
   console.log("props", props);
@@ -41,7 +42,6 @@ const Home = (props) => {
   return (
     <div>
       <Box
-        
         sx={{
           background:
             "linear-gradient(90deg,rgb(39, 176, 255) 0%,rgb(0, 232, 236) 100%)",
@@ -52,7 +52,11 @@ const Home = (props) => {
         <Typography sx={{ color: "#fff" }} mt="2" variant="h1">
           Dota 2 Ranked Turbo
         </Typography>
-        <img style={{height:"450px", borderRadius: "10px"}} src="images/marci.gif" alt="" />
+        <img
+          style={{ height: "450px", borderRadius: "10px" }}
+          src="images/turboLogo.gif"
+          alt=""
+        />
         <Typography sx={{ color: "#fff" }} variant="h3">
           Lets get these points
         </Typography>
