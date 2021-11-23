@@ -21,6 +21,8 @@ const Navbar = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             News
           </Typography>
+          <MenuItem>About</MenuItem>
+          <MenuItem>Leader Board</MenuItem>
           <ModalForm/>
         </Toolbar>
       </AppBar>
