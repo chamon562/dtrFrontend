@@ -21,20 +21,20 @@ grab it by the className of the div .form-inputs and p tag  */
   z-index: 1;
   color: #fff;
   cursor: pointer;
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 .close-btn:hover {
-  color:rgb(8, 231, 64);
+  color: rgb(8, 231, 64);
   transform: scale(1.04);
 }
 
 .form-content-left {
-  background: linear-gradient(
+  border-radius: 10px;
+  /* background: linear-gradient(
     90deg,
     rgb(39, 176, 255) 0%,
     rgb(0, 232, 236) 100%
-  );
-  border-radius: 10px 0 0 10px;
+  ); */
   position: relative;
 }
 
@@ -42,6 +42,7 @@ grab it by the className of the div .form-inputs and p tag  */
   width: 100%;
   height: 100%;
   position: absolute;
+  border-radius: 10px 0 0 10px;
   top: 50%;
   left: 50%;
   /* border-radius: 10px; */
@@ -63,9 +64,8 @@ grab it by the className of the div .form-inputs and p tag  */
   font-size: 24px;
   margin-top: 80px;
   color: #39ff14;
-  text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
 }
-
 
 .form-content-right {
   border-radius: 0 10px 10px 0;

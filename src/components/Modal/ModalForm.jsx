@@ -50,7 +50,7 @@ const ModalForm = () => {
       >
         <Fade in={open}>
           <Box>
-            <Form handleClose={handleClose} />
+            {/* <Form handleClose={handleClose} /> */}
           </Box>
         </Fade>
       </Modal>

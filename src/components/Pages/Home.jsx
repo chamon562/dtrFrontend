@@ -40,12 +40,15 @@ const Home = (props) => {
     props.search(searchValue);
   };
   return (
-    <div>
+    <div 
+      style={{
+        background:
+          "linear-gradient(90deg,rgb(39, 176, 255) 0%,rgb(0, 232, 236) 100%)",
+          height: "100vh"
+      }}
+    >
       <Box
         sx={{
-          background:
-            "linear-gradient(90deg,rgb(39, 176, 255) 0%,rgb(0, 232, 236) 100%)",
-          height: "100vh",
           textAlign: "center",
         }}
       >

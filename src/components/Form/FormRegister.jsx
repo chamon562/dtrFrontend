@@ -4,6 +4,7 @@ import useForm from "./useForm";
 import validateInfo from "../validateInfo/validateInfo"
 import "./Form.css"
 import FormLogin from "./FormLogin";
+import { Link } from "react-router-dom";
 
 const FormRegister = ({submitForm, handleClose}) => {
   // if after hitting the submit and it refreshes use the e.preventDefault
@@ -100,7 +101,7 @@ const FormRegister = ({submitForm, handleClose}) => {
           <span >Sign Up</span>
         </button>
         <span className="form-input-login">
-          Already have an account? Login <a href="/FormLogin">here</a>
+          Already have an account? Login <Link to="/login" >here</Link>
         </span>
       </form>
     </div>
