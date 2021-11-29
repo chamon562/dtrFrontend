@@ -8,7 +8,7 @@ const Footer = () => {
     >
       <div className=" text-center">
         <span style={{ color: "#afa6a6" }}>
-          All rights reserved to my homies {new Date().getFullYear()}
+          All rights reserved, Sleep Walkerz {new Date().getFullYear()}
         </span>
       </div>
     </footer>
