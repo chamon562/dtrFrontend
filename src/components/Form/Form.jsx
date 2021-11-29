@@ -15,7 +15,7 @@ const Form = (props) => {
   return (
     <>
       <div className="form-container">
-        <span className="close-btn" onClick={props.handleClose}><CloseIcon /></span>
+        <span className="close-btn" onClick={props.handleClose}></span>
         <div className="form-content-left">
           <img
             className="form-img"
