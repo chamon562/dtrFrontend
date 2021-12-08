@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import FormRegister from "./FormRegister";
 import FormSucess from "./FormSuccess";
 import "./Form.css";
-import CloseIcon from '@mui/icons-material/Close';
-
+import CloseIcon from "@mui/icons-material/Close";
+import useForm from "./useForm";
+import validateInfo from "../validateInfo/validateInfo";
+import { Redirect } from "react-router-dom";
 const Form = (props) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   // this is the function taht will set isSubmitted to true
@@ -12,6 +14,11 @@ const Form = (props) => {
     // pass submitForm in useForm
     setIsSubmitted(true);
   }
+  const { handleChange, handleSubmit, errors, values, redirect } = useForm(
+    submitForm,
+    validateInfo
+  );
+
   return (
     <>
       <div className="form-container">
@@ -25,9 +32,13 @@ const Form = (props) => {
         </div>
         {/* <FormRegister /> */}
         {!isSubmitted ? (
-          <FormRegister handleClose={props.handleClose} submitForm={submitForm} />
+          <FormRegister
+            handleClose={props.handleClose}
+            submitForm={submitForm}
+          />
         ) : (
-          <FormSucess handleClose={props.handleClose}/>
+          // <FormSucess />
+          <Redirect to="/login" />
         )}
       </div>
     </>

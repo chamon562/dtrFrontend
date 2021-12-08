@@ -92,16 +92,16 @@ const Home = (props) => {
             }
             {props.searchData.turboRank ? (
               <Typography
-                variant="h2"
+                variant="h4"
                 sx={{ textShadow: "6px 6px 0px rgba(0,0,0,0.2)" }}
               >
                 Turbo Rating
-                <Typography variant="h1" sx={{ color: "#C0C0C0" }}>
+                <Typography variant="h3" sx={{ color: "#C0C0C0" }}>
                   {props.searchData.turboRank}
                 </Typography>
               </Typography>
             ) : !props.searchData ? (
-              <Typography variant="h3" sx={{ color: "red" }}>
+              <Typography variant="h4" sx={{ color: "red" }}>
                 This Person does not have a Rank turbo account.
               </Typography>
             ) : (

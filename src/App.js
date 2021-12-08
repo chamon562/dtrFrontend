@@ -12,6 +12,9 @@ import FormRegister from "./components/Form/FormRegister";
 import About from "./components/Pages/About";
 import Form from "./components/Form/Form";
 import Footer from "./components/Pages/Footer";
+import SnackBar from "./components/SnackBar/SnackBar";
+import Profile from "./components/Pages/Profile";
+
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const user = localStorage.getItem("jwtToken");
   return (
@@ -74,14 +77,31 @@ function App() {
   };
 
   return (
-    <div className="main" >
+    <div className="main">
       <Navbar handleLogout={handleLogout} isAuth={isAuthenticated} />
-      <div >
+      <SnackBar />
+      <div>
         <Switch>
           <Home exact path="/" search={search} searchData={searchData} />
           <Route path="/about" component={About} />
           <Route path="/register" component={Form} />
-          <Route path="/login" component={FormLogin} />
+          <Route
+            path="/login"
+            render={(props) => (
+              <FormLogin
+                {...props}
+                nowCurrentUser={nowCurrentUser}
+                setIsAuthenticated={setIsAuthenticated}
+                user={currentUser}
+              />
+            )}
+          />
+          <PrivateRoute
+            path="/profile"
+            component={Profile}
+            user={currentUser}
+            nowCurrentUser={nowCurrentUser}
+          />
         </Switch>
       </div>
       {/* <ModalForm /> */}

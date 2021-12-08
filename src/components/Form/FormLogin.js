@@ -1,18 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 // import useForm custome hook
 import useForm from "./useForm";
 import validateInfo from "../validateInfo/validateInfo";
 import "./Form.css";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { chainPropTypes } from "@mui/utils";
+import jwt_decode from "jwt-decode";
+import setAuthToken from "../../utils/setAuthToken";
+import axios from "axios";
 
-const FormLogin = ({ submitForm, handleClose }) => {
+const FormLogin = ( props) => {
+  console.log(props);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   // if after hitting the submit and it refreshes use the e.preventDefault
   // destructure the values from useForm
   // and keep it blank for now
-  const { handleChange, handleSubmit, errors, values } = useForm(
-    submitForm,
-    validateInfo
-  );
+  // const { handleChange, errors, values } = useForm(submitForm, validateInfo);
+  let handleEmail = (e) => {
+    setEmail(e.target.value.toLowerCase());
+    console.log(email)
+  };
+  let handlePassword = (e) => {
+    setPassword(e.target.value);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const userData = { email, password };
+    console.log(userData);
+    axios
+      .post(`${process.env.REACT_APP_SERVER_URL}/api/users/login`, userData)
+      .then((response) => {
+        const { token } = response.data;
+        localStorage.setItem("jwtToken", token);
+        setAuthToken(token);
+        const decoded = jwt_decode(token);
+        props.nowCurrentUser(decoded);
+      })
+      .catch((error) => console.log("Login error", error));
+  };
+
+  if (props.user) return <Redirect to="/profile" user={props.user} />;
   return (
     <div className="form-container">
       <div className="form-content-left">
@@ -28,30 +56,28 @@ const FormLogin = ({ submitForm, handleClose }) => {
               Email
             </label>
             <input
-              id="email"
               type="email"
               name="email"
               className="form-input"
               placeholder="Enter your email"
-              value={values.email}
-              onChange={handleChange}
+              value={email}
+              onChange={handleEmail}
             />
-            {errors.email && <p>{errors.email}</p>}
+            {/* {errors.email && <p>{errors.email}</p>} */}
           </div>
           <div className="form-inputs">
             <label htmlFor="password" className="form-label">
               Password
             </label>
             <input
-              id="password"
               type="password"
               name="password"
               className="form-input"
               placeholder="Enter your password"
-              value={values.password}
-              onChange={handleChange}
+              value={password}
+              onChange={handlePassword}
             />
-            {errors.password && <p>{errors.password}</p>}
+            {/* {errors.password && <p>{errors.password}</p>} */}
           </div>
           <button className="form-input-btn reg" type="submit">
             <span>Login</span>

@@ -1,71 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 // import useForm custome hook
 import useForm from "./useForm";
 import validateInfo from "../validateInfo/validateInfo";
 import "./Form.css";
 import FormLogin from "./FormLogin";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { Redirect } from "react-router-dom";
+import { Alert, Snackbar } from "@mui/material";
+import SnackBar from "../SnackBar/SnackBar";
+
+
 
 const FormRegister = ({ submitForm, handleClose }) => {
-  const [friendId, setFriendId] = useState("");
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [redirect, setRedirect] = useState(false);
-  const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleFriendId = (e) => {
-    setFriendId(e.target.value);
-  };
-  const handleName = (e) => {
-    setName(e.target.value);
-  };
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-  };
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
-  };
-  const handleConfirmPassword = (e) => {
-    setConfirmPassword(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (password === confirmPassword) {
-      let newUser = { friendId, name, email, password };
-      axios
-        .post(`${process.env.REACT_APP_SERVER_URL}/api/users/register`, newUser)
-        .then((response) => {
-          console.log(response);
-          setRedirect(true);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-        setErrors(validateInfo(newUser));
-    }
-    // underneath handle submit lets create a state for
-    // once submitted setIsSubmitted to true
-    // this will be used for a function that will let us see that the submit is successful or not
-    setIsSubmitting(true);
-  };
-  useEffect((callback) => {
-    // if there is zero errors then return isSubmitting
-    if (Object.keys(errors).length === 0 && isSubmitting) {
-      // run call back function
-      callback();
-    }
-    // only want it to trigger when it updates the error
-  }, [errors]);
-  // return { handleSubmit, errors, values };
+  
   // if after hitting the submit and it refreshes use the e.preventDefault
   // destructure the values from useForm
   // and keep it blank for now
-
+  const { handleChange, handleSubmit, errors, values, redirect, snackBar } = useForm(
+    submitForm,
+    validateInfo
+  );
+  // const [redirect, setRedirect] = useState(false);
+  if (redirect ) {
+    return <Redirect to="/login" />  ;
+  }
   return (
     <div className="form-content-right">
       <form className="form" onSubmit={handleSubmit}>
@@ -83,8 +41,8 @@ const FormRegister = ({ submitForm, handleClose }) => {
             name="friendId"
             className="form-input"
             placeholder="Enter your friendId"
-            value={friendId}
-            onChange={handleFriendId}
+            value={values.friendId}
+            onChange={handleChange}
           />
           {/* little trick I learned when useing the && sign it says that
           if errors.friendId is true then its going to return whatever I pass after that
@@ -102,8 +60,8 @@ const FormRegister = ({ submitForm, handleClose }) => {
             name="name"
             className="form-input"
             placeholder="Enter your name"
-            value={name}
-            onChange={handleName}
+            value={values.name}
+            onChange={handleChange}
           />
           {errors.name && <p>{errors.name}</p>}
         </div>
@@ -117,8 +75,8 @@ const FormRegister = ({ submitForm, handleClose }) => {
             name="email"
             className="form-input"
             placeholder="Enter your email"
-            value={email}
-            onChange={handleEmail}
+            value={values.email}
+            onChange={handleChange}
           />
           {errors.email && <p>{errors.email}</p>}
         </div>
@@ -132,8 +90,8 @@ const FormRegister = ({ submitForm, handleClose }) => {
             name="password"
             className="form-input"
             placeholder="Enter your password"
-            value={password}
-            onChange={handlePassword}
+            value={values.password}
+            onChange={handleChange}
           />
           {errors.password && <p>{errors.password}</p>}
         </div>
@@ -147,15 +105,15 @@ const FormRegister = ({ submitForm, handleClose }) => {
             name="password2"
             className="form-input"
             placeholder="Please type in your password again to confirm"
-            value={confirmPassword}
-            onChange={handleConfirmPassword}
+            value={values.password2}
+            onChange={handleChange}
           />
-          {/* {<p>{error}</p>} */}
           {errors.password2 && <p>{errors.password2}</p>}
         </div>
         <button className="form-input-btn reg" type="submit">
           <span>Sign Up</span>
         </button>
+         
         <span className="form-input-login">
           Already have an account? Login <Link to="/login">here</Link>
         </span>

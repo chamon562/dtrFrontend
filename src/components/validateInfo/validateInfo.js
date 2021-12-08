@@ -1,13 +1,15 @@
 import React from "react";
+import SnackBar from "../SnackBar/SnackBar";
 
 const validateInfo = (values) => {
   let errors = {};
+ 
   if (!values.friendId) {
     errors.friendId = "Friend Id is required";
   }
   if (!values.name.trim()) {
     // if values.name is not true
-    errors.name = "Name  required";
+    errors.name = "Name required";
   }
   if (!values.email.trim()) {
     errors.email = "Email required";
