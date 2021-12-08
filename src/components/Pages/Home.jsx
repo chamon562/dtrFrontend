@@ -12,7 +12,7 @@ import { Box } from "@mui/system";
 import FormLogin from "../Form/FormLogin";
 
 const Home = (props) => {
-  console.log("props", props);
+  console.log(props);
   // TODO do a state for friendId and setFriend id
   // when doing the handle submit the friendId by default would be an empty string
   // then target the string interpolation an axios.get(`http://localhost:8000/api/users/path/${setFriendId}`)
@@ -40,11 +40,11 @@ const Home = (props) => {
     props.search(searchValue);
   };
   return (
-    <div 
+    <div
       style={{
         background:
           "linear-gradient(90deg,rgb(39, 176, 255) 0%,rgb(0, 232, 236) 100%)",
-          height: "100vh"
+        height: "100vh",
       }}
     >
       <Box
@@ -100,7 +100,7 @@ const Home = (props) => {
                   {props.searchData.turboRank}
                 </Typography>
               </Typography>
-            ) : !props.searchData ? (
+            ) : props.searchData === "" ? (
               <Typography variant="h4" sx={{ color: "red" }}>
                 This Person does not have a Rank turbo account.
               </Typography>

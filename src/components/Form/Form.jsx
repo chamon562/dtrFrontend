@@ -6,7 +6,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import useForm from "./useForm";
 import validateInfo from "../validateInfo/validateInfo";
 import { Navigate } from "react-router-dom";
-const Form = (props) => {
+const Form = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   // this is the function taht will set isSubmitted to true
   function submitForm() {
@@ -22,7 +22,6 @@ const Form = (props) => {
   return (
     <>
       <div className="form-container">
-        <span className="close-btn" onClick={props.handleClose}></span>
         <div className="form-content-left">
           <img
             className="form-img"
@@ -32,10 +31,7 @@ const Form = (props) => {
         </div>
         {/* <FormRegister /> */}
         {!isSubmitted ? (
-          <FormRegister
-            handleClose={props.handleClose}
-            submitForm={submitForm}
-          />
+          <FormRegister submitForm={submitForm} />
         ) : (
           // <FormSucess />
           <Navigate to="/login" />

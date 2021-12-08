@@ -35,7 +35,7 @@ function App() {
   const [searchData, setSearchData] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [currentUser, setCurrentUser] = useState("");
-
+  const [error, setError] = useState("");
   const search = (searchValue) => {
     axios
       .get(`http://localhost:8000/api/users/path/${searchValue}`)
@@ -43,7 +43,8 @@ function App() {
         setSearchData(res.data);
       })
       .catch((error) => {
-        console.log(error);
+        setError(error);
+        console.log("error: ", error)
       });
   };
 
@@ -83,13 +84,11 @@ function App() {
       <div>
         <Routes>
           <Route
-            element={Home}
+            element={<Home search={search} searchData={searchData} />}
             path="/"
-            search={search}
-            searchData={searchData}
           />
-          <Route path="/about" element={About} />
-          <Route path="/register" element={Form} />
+          <Route path="/about" element={<About />} />
+          <Route path="/register" element={<Form />} />
           <Route
             path="/login"
             element={
