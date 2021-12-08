@@ -79,7 +79,7 @@ function App() {
   return (
     <div className="main">
       <Navbar handleLogout={handleLogout} isAuth={isAuthenticated} />
-      <SnackBar />
+      {/* <SnackBar /> */}
       <div>
         <Switch>
           <Home exact path="/" search={search} searchData={searchData} />
