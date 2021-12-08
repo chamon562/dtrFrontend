@@ -55,16 +55,6 @@ const Home = (props) => {
         <Typography sx={{ color: "#fff" }} mt="2" variant="h1">
           Dota 2 Ranked Turbo
         </Typography>
-        <img
-          style={{ height: "450px", borderRadius: "10px" }}
-          src="images/turboLogo.gif"
-          alt=""
-        />
-        <Typography sx={{ color: "#fff" }} variant="h3">
-          Lets get these points
-        </Typography>
-        {/* if the searchValue is blank send back friend id not found maybe else return the user info */}
-        {/* <CssBaseline /> */}
         <Container fixed maxWidth="sm">
           <FormGroup>
             <TextField
@@ -109,6 +99,14 @@ const Home = (props) => {
             )}
           </FormGroup>
         </Container>
+        <img
+          style={{ height: "450px", borderRadius: "10px" }}
+          src="images/turboLogo.gif"
+          alt=""
+        />
+
+        {/* if the searchValue is blank send back friend id not found maybe else return the user info */}
+        {/* <CssBaseline /> */}
       </Box>
     </div>
   );
