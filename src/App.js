@@ -15,20 +15,10 @@ import Footer from "./components/Pages/Footer";
 import SnackBar from "./components/SnackBar/SnackBar";
 import Profile from "./components/Pages/Profile";
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
+const PrivateRoute = ({ children }) => {
+  console.log("😁",children)
   const user = localStorage.getItem("jwtToken");
-  return (
-    <Route
-      {...rest}
-      render={(props) => {
-        return user ? (
-          <Component {...rest} {...props} />
-        ) : (
-          <Navigate to="/login" />
-        );
-      }}
-    />
-  );
+  return user ? children : <Navigate to="/login" />;
 };
 
 function App() {
@@ -44,7 +34,6 @@ function App() {
       })
       .catch((error) => {
         setError(error);
-        console.log("error: ", error)
       });
   };
 
@@ -102,11 +91,9 @@ function App() {
           <Route
             path="/profile"
             element={
-              <PrivateRoute
-                element={Profile}
-                user={currentUser}
-                nowCurrentUser={nowCurrentUser}
-              />
+              <PrivateRoute>
+                <Profile user={currentUser} nowCurrentUser={nowCurrentUser} />
+              </PrivateRoute>
             }
           />
         </Routes>

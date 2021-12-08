@@ -3,23 +3,24 @@ import React, { useState } from "react";
 import useForm from "./useForm";
 import validateInfo from "../validateInfo/validateInfo";
 import "./Form.css";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { chainPropTypes } from "@mui/utils";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "../../utils/setAuthToken";
 import axios from "axios";
 
-const FormLogin = ( props) => {
+const FormLogin = (props) => {
   console.log(props);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   // if after hitting the submit and it refreshes use the e.preventDefault
   // destructure the values from useForm
   // and keep it blank for now
   // const { handleChange, errors, values } = useForm(submitForm, validateInfo);
   let handleEmail = (e) => {
     setEmail(e.target.value.toLowerCase());
-    console.log(email)
+    console.log(email);
   };
   let handlePassword = (e) => {
     setPassword(e.target.value);
@@ -40,7 +41,10 @@ const FormLogin = ( props) => {
       .catch((error) => console.log("Login error", error));
   };
 
-  if (props.user) return <Navigate to="/profile" user={props.user} />;
+  if (props.user) {
+    // return <Navigate to="/profile" user={props.user} />;
+    navigate("/profile");
+  }
   return (
     <div className="form-container">
       <div className="form-content-left">
