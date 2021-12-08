@@ -5,7 +5,7 @@ import validateInfo from "../validateInfo/validateInfo";
 import "./Form.css";
 import FormLogin from "./FormLogin";
 import { Link } from "react-router-dom";
-import { Redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { Alert, Snackbar } from "@mui/material";
 import SnackBar from "../SnackBar/SnackBar";
 
@@ -22,7 +22,7 @@ const FormRegister = ({ submitForm, handleClose }) => {
   );
   // const [redirect, setRedirect] = useState(false);
   if (redirect ) {
-    return <Redirect to="/login" />  ;
+    return <Navigate to="/login" />  ;
   }
   return (
     <div className="form-content-right">

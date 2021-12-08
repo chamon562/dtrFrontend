@@ -5,7 +5,7 @@ import "./Form.css";
 import CloseIcon from "@mui/icons-material/Close";
 import useForm from "./useForm";
 import validateInfo from "../validateInfo/validateInfo";
-import { Redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 const Form = (props) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   // this is the function taht will set isSubmitted to true
@@ -38,7 +38,7 @@ const Form = (props) => {
           />
         ) : (
           // <FormSucess />
-          <Redirect to="/login" />
+          <Navigate to="/login" />
         )}
       </div>
     </>

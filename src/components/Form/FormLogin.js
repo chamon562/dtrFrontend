@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import useForm from "./useForm";
 import validateInfo from "../validateInfo/validateInfo";
 import "./Form.css";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { chainPropTypes } from "@mui/utils";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "../../utils/setAuthToken";
@@ -40,7 +40,7 @@ const FormLogin = ( props) => {
       .catch((error) => console.log("Login error", error));
   };
 
-  if (props.user) return <Redirect to="/profile" user={props.user} />;
+  if (props.user) return <Navigate to="/profile" user={props.user} />;
   return (
     <div className="form-container">
       <div className="form-content-left">

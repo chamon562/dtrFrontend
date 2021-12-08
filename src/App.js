@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 import Home from "./components/Pages/Home";
 import axios from "axios";
@@ -24,7 +24,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
         return user ? (
           <Component {...rest} {...props} />
         ) : (
-          <Redirect to="/login" />
+          <Navigate to="/login" />
         );
       }}
     />
@@ -81,28 +81,36 @@ function App() {
       <Navbar handleLogout={handleLogout} isAuth={isAuthenticated} />
       {/* <SnackBar /> */}
       <div>
-        <Switch>
-          <Home exact path="/" search={search} searchData={searchData} />
-          <Route path="/about" component={About} />
-          <Route path="/register" component={Form} />
+        <Routes>
+          <Route
+            element={Home}
+            path="/"
+            search={search}
+            searchData={searchData}
+          />
+          <Route path="/about" element={About} />
+          <Route path="/register" element={Form} />
           <Route
             path="/login"
-            render={(props) => (
+            element={
               <FormLogin
-                {...props}
                 nowCurrentUser={nowCurrentUser}
                 setIsAuthenticated={setIsAuthenticated}
                 user={currentUser}
               />
-            )}
+            }
           />
-          <PrivateRoute
+          <Route
             path="/profile"
-            component={Profile}
-            user={currentUser}
-            nowCurrentUser={nowCurrentUser}
+            element={
+              <PrivateRoute
+                element={Profile}
+                user={currentUser}
+                nowCurrentUser={nowCurrentUser}
+              />
+            }
           />
-        </Switch>
+        </Routes>
       </div>
       {/* <ModalForm /> */}
       {/* {<h1>{searchData.name}</h1>}
