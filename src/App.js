@@ -36,7 +36,7 @@ function App() {
         setError(error);
       });
   };
-
+ 
   useEffect(() => {
     let token;
     if (!localStorage.getItem("jwtToken")) {

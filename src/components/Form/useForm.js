@@ -58,6 +58,8 @@ const useForm = (callback, validate) => {
     setIsSubmitting(true);
     console.log(values);
   };
+
+  
   useEffect(() => {
     // if there is zero errors then return isSubmitting
     if (Object.keys(errors).length === 0 && isSubmitting) {
