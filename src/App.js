@@ -13,7 +13,7 @@ import About from "./components/Pages/About";
 import Form from "./components/Form/Form";
 import Footer from "./components/Pages/Footer";
 import SnackBar from "./components/SnackBar/SnackBar";
-import Profile from "./components/Pages/Profile";
+import Profile from "./components/Pages/profile/Profile";
 import GetDotaApi from "./components/api/GetDotaApi";
 
 const PrivateRoute = ({ children }) => {

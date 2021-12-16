@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import FaceIcon from "@mui/icons-material/Face";
 import axios from "axios";
 import { Container, Typography } from "@mui/material";
+import ProfileDotaStateOne from "./ProfileDotaStateOne";
 // TODO MAKE 2 SEPERATE API CALLS THE FIRST ONE TO GET THE ACCOUNT USER LOGGED IN friend.id
 // TODO THEN PASS user Friendid inside the api call to get dota info back from the user.
 const Profile = (props) => {
@@ -53,6 +53,10 @@ const Profile = (props) => {
         <h1>{dotaData.profile.personaname}</h1>
         <img src={dotaData.profile.avatarfull} alt="" />
         <h1>Tubo Rank: {userData.turboRank}</h1>
+      </Container>
+      <Container>
+        <Typography>Container 2 dota stats</Typography>
+        <ProfileDotaStateOne userData={userData}/>
       </Container>
     </div>
   );

@@ -6,7 +6,7 @@ import About from "../Pages/About";
 import { NavLink, Link } from "react-router-dom";
 import Form from "../Form/Form";
 import FormRegister from "../Form/FormRegister";
-import Profile from "../Pages/Profile";
+import Profile from "../Pages/profile/Profile";
 import FaceIcon from "@mui/icons-material/Face";
 const Navbar = (props) => {
   console.log(props);
