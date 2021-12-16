@@ -1,30 +1,41 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Container, Typography } from "@mui/material";
+import { Box } from "@mui/system";
 const ProfileDotaStateOne = (props) => {
   const [dotaMatches, setDotaMatches] = useState([]);
-  const [radient, setRadient] = useState("");
-  const [dire, setDire] = useState("");
+  const [radient, setRadient] = useState(false);
+  const [dire, setDire] = useState(false);
+
   useEffect(() => {
     axios
       .get(`/api/players/${props.userData.friendId}/recentMatches`)
-      .then((res) => setDotaMatches(res.data))
+      .then((res) => {
+        setDotaMatches(res.data);
+        if (res.data[0].player_slot <= 127) {
+          setRadient(true);
+        } else {
+          setDire(true);
+        }
+      })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
-  const playSlot = dotaMatches[0].player_slot;
-  console.log(props.userData.friendId);
-  console.log(playSlot);
-  if (playSlot <= 127) {
-    console.log("you are radient");
-  } else {
-    console.log(" you are dire homie");
-  }
+  }, [radient]);
+  //   console.log(dotaMatches[0].player_slot);
+  console.log(radient);
+  console.log(dire);
   //   player_slot:  Which slot the player is in. 0-127 are Radiant, 128-255 are Dire
-  //   if(dotaMatches[0].player_slot <= 127){
-  //       console.log(`you are radient`)
-  //   }
-  return <div>profile dota stats</div>;
+
+  return (
+    <Container maxWidth="sm">
+      <Box>
+        <Typography>
+          {!dire ? <div>you are radient</div> : <div>You are dire</div>}
+        </Typography>
+      </Box>
+    </Container>
+  );
 };
 
 export default ProfileDotaStateOne;

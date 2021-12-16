@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Container, Typography } from "@mui/material";
+import { Container, Stack, Typography } from "@mui/material";
 import ProfileDotaStateOne from "./ProfileDotaStateOne";
+import { Box } from "@mui/system";
 // TODO MAKE 2 SEPERATE API CALLS THE FIRST ONE TO GET THE ACCOUNT USER LOGGED IN friend.id
 // TODO THEN PASS user Friendid inside the api call to get dota info back from the user.
 const Profile = (props) => {
@@ -49,15 +50,17 @@ const Profile = (props) => {
 
   return (
     <div style={{ minHeight: " 100vh" }}>
-      <Container>
-        <h1>{dotaData.profile.personaname}</h1>
+      <Container  maxWidth={"sm"} sx={{ display: "flex", justifyContent: "center", mt: 5 }}  >
         <img src={dotaData.profile.avatarfull} alt="" />
-        <h1>Tubo Rank: {userData.turboRank}</h1>
+        <Stack direction="column" spacing={2} ml={5}>
+          <h1>{dotaData.profile.personaname}</h1>
+          <h1>Tubo Rank: {userData.turboRank}</h1>
+        </Stack>
       </Container>
-      <Container>
+      <Box>
         <Typography>Container 2 dota stats</Typography>
-        <ProfileDotaStateOne userData={userData}/>
-      </Container>
+        <ProfileDotaStateOne userData={userData} />
+      </Box>
     </div>
   );
 };
