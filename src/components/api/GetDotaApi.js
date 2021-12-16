@@ -1,21 +1,22 @@
 import axios from "axios";
-import React,{useEffect} from "react";
+import React, { useEffect, useState } from "react";
 
 const GetDotaApi = (props) => {
-  console.log(props.userData.friendId);
-  const dotaInfoAPiCall = () => {
+  const[dotaData, setDotaData] = useState([])
+  console.log(props);
+  
     axios
-      .get(`https://api.opendota.com/api/players/${props.userData.friendId}`)
+      .get(`https://api.opendota.com/api/players/${props.userInfo.friendId}`)
       .then((res) => {
-        console.log(res);
+        setDotaData(res.data);
+        return res.data
       })
       .catch((error) => {
         console.log(error);
       });
-  };
-  useEffect(() => {
-    dotaInfoAPiCall();
-  }, []);
+  
+  console.log(dotaData)
+  
   return <div></div>;
 };
 

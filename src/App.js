@@ -14,9 +14,10 @@ import Form from "./components/Form/Form";
 import Footer from "./components/Pages/Footer";
 import SnackBar from "./components/SnackBar/SnackBar";
 import Profile from "./components/Pages/Profile";
+import GetDotaApi from "./components/api/GetDotaApi";
 
 const PrivateRoute = ({ children }) => {
-  console.log("😁",children)
+  console.log("😁", children);
   const user = localStorage.getItem("jwtToken");
   return user ? children : <Navigate to="/login" />;
 };
@@ -26,6 +27,8 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [currentUser, setCurrentUser] = useState("");
   const [error, setError] = useState("");
+  const [userInfo, setUserInfo] = useState([]);
+  const [dotaUser, setDotaUser] = useState("");
   const search = (searchValue) => {
     axios
       .get(`http://localhost:8000/api/users/path/${searchValue}`)
@@ -36,7 +39,21 @@ function App() {
         setError(error);
       });
   };
- 
+
+  // useEffect(()=>{
+
+  //   axios
+  //     .get(`/api/users/${currentUser.id}`)
+  //     .then((res) => {
+  //       setUserInfo(res.data);
+  //       return res.data;
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+
+  // },[setUserInfo])
+
   useEffect(() => {
     let token;
     if (!localStorage.getItem("jwtToken")) {
@@ -48,7 +65,6 @@ function App() {
       setIsAuthenticated(true);
     }
   }, []);
-
   console.log(`Current User ${currentUser}`);
   console.log(`Authenticated ${isAuthenticated}`);
 
@@ -57,7 +73,27 @@ function App() {
     setCurrentUser(userData);
     setIsAuthenticated(true);
   };
+  // console.log(currentUser.id);
 
+  console.log("user info: ", userInfo);
+  // console.log("😐", userInfo);
+
+  // useEffect(() => {
+  //   axios.get(`/api/players/${userInfo.friendId}`)
+  //   .then((res)=>{
+  //     setDotaUser(res.data)
+  //   })
+
+  // }, [dotaUser]);
+
+  // await axios
+  //   .get(`https://api.opendota.com/api/players/${userInfo.friendId}`)
+  //   .then((res) => {
+  //     setDotaUser(res.data);
+  //   })
+  //   .catch((error) => console.log(error));
+
+  console.log("😪", dotaUser);
   const handleLogout = () => {
     if (localStorage.getItem("jwtToken")) {
       localStorage.removeItem("jwtToken");
@@ -65,11 +101,9 @@ function App() {
       setIsAuthenticated(false);
     }
   };
-
   return (
     <div className="main">
       <Navbar handleLogout={handleLogout} isAuth={isAuthenticated} />
-      {/* <SnackBar /> */}
       <div>
         <Routes>
           <Route
@@ -92,7 +126,11 @@ function App() {
             path="/profile"
             element={
               <PrivateRoute>
-                <Profile user={currentUser} nowCurrentUser={nowCurrentUser} />
+                <Profile
+                  userInfo={userInfo}
+                  user={currentUser}
+                  nowCurrentUser={nowCurrentUser}
+                />
               </PrivateRoute>
             }
           />

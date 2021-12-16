@@ -37,6 +37,7 @@ const FormLogin = (props) => {
         setAuthToken(token);
         const decoded = jwt_decode(token);
         props.nowCurrentUser(decoded);
+        console.log(response)
       })
       .catch((error) => console.log("Login error", error));
   };
