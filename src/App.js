@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
-import Home from "./components/Pages/Home";
+import Home from "./components/Pages/Home/Home";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
@@ -15,6 +15,9 @@ import Footer from "./components/Pages/Footer";
 import SnackBar from "./components/SnackBar/SnackBar";
 import Profile from "./components/Pages/profile/Profile";
 import GetDotaApi from "./components/api/GetDotaApi";
+import Main from "./components/Pages/Home/Main/Main";
+import { Typography } from "@mui/material";
+import SearchBar from "./components/SearchBar/SearchBar";
 
 const PrivateRoute = ({ children }) => {
   console.log("😁", children);
@@ -104,6 +107,7 @@ function App() {
   return (
     <div className="main">
       <Navbar handleLogout={handleLogout} isAuth={isAuthenticated} />
+
       <div>
         <Routes>
           <Route

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ModalForm from "../Modal/ModalForm";
 import PetsIcon from "@mui/icons-material/Pets";
 // import Home from "../Pages/Home";
@@ -8,75 +8,69 @@ import Form from "../Form/Form";
 import FormRegister from "../Form/FormRegister";
 import Profile from "../Pages/profile/Profile";
 import FaceIcon from "@mui/icons-material/Face";
+import { TextField } from "@mui/material";
+import HomeIcon from "@mui/icons-material/Home";
+import rankTurboLogo from "../../assets/images/turboLogo.gif";
+import "./Navbar.css";
+import searchIcon from "../../assets/images/search.png";
 const Navbar = (props) => {
-  console.log(props);
+  // if scrollY setActive to true
+  const [navActive, setNavActive] = useState(false);
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div className="container">
-        <Link className="navbar-brand" to="/">
-          <PetsIcon />
+    <nav className="navbar active">
+      {/* logo */}
+      <div className="navLogoContainer">
+        <Link to="/">
+          <img src={rankTurboLogo} alt="" className="navLogo" />
         </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarsExample07"
-          aria-controls="#navbarsExample07"
-          adia-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarsExample07">
-          <ul className="navbar-nav ml-auto">
-            <li className="nav-item">
-              <NavLink className="nav-link" exact to="/">
-                Home
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/about">
-                About
-              </NavLink>
-            </li>
-            {/* <li>
-              <NavLink className="nav-link" to="/register">
-                Create Account
-              </NavLink>
-            </li> */}
-          </ul>
-          {props.isAuth ? (
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <span
-                  style={{ cursor: "pointer" }}
-                  onClick={props.handleLogout}
-                  className="nav-link logout-link"
-                >
-                  Logout
-                </span>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/profile">
-                  <FaceIcon />
-                </NavLink>
-              </li>
-            </ul>
-          ) : (
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/register">
-                  Create Account
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/login">
-                  Login
-                </NavLink>
-              </li>
-            </ul>
-          )}
+      </div>
+
+      <div className="searchBar">
+        <input
+          className="searchInput"
+          type="text"
+          placeholder="Search Friend ID..."
+        />
+        <div className="searchIconContainer">
+          <img src={searchIcon} alt="" />
         </div>
+      </div>
+      <div className="navMenu">
+        <ul className="navMenuItems">
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/about">About</NavLink>
+          </li>
+        </ul>
+        {props.isAuth ? (
+          <ul className="navMenuItems">
+            <li>
+              <span
+                
+                onClick={props.handleLogout}
+                
+              >
+                Logout
+              </span>
+            </li>
+            <li>
+              <NavLink to="/profile">
+                <FaceIcon />
+              </NavLink>
+            </li>
+          </ul>
+        ) : (
+          <ul className="navMenuItems">
+            <li>
+              <NavLink to="/register">Create Account</NavLink>
+            </li>
+            <li className="loginBtn">
+              <NavLink to="/login">Login</NavLink>
+            </li>
+          </ul>
+        )}
       </div>
     </nav>
   );

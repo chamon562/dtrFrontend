@@ -1,0 +1,71 @@
+.navbar {
+  background-color: transparent;
+  display: flex;
+  justify-content: none;
+  
+}
+
+.navLogo img {
+  width: 80px;
+  height: 80px;
+}
+.navLogo {
+  width: 200px;
+}
+.searchBar {
+  height: 50px;
+  background-color: #1c1c1e;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  border-radius: 50px;
+}
+
+.searchIconContainer {
+   
+  margin: 20px;
+  cursor: pointer;
+}
+
+
+.searchInput {
+  height: 50px;
+  width: 100%;
+  border-radius: 50px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 16px;
+  margin-left: 15px;
+}
+
+
+.navMenu {
+    display:flex;
+    margin: 15px;
+}
+
+.navMenu li{
+    list-style: none;
+    
+}
+
+.navMenu li a{
+    cursor: pointer;
+}
+.navMenu li a:hover{
+    color: #00FFFF;
+    
+}
+.navMenu a {
+    text-decoration: none;
+    font-size: 20px;
+    margin: 15px;
+    
+}
+.navMenuItems{
+    display: flex;
+    
+}
+

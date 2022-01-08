@@ -6,6 +6,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import useForm from "./useForm";
 import validateInfo from "../validateInfo/validateInfo";
 import { Navigate } from "react-router-dom";
+import d2TurboImg from "../../assets/images/d2TurboPix.png";
 const Form = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   // this is the function taht will set isSubmitted to true
@@ -23,11 +24,7 @@ const Form = () => {
     <>
       <div className="form-container">
         <div className="form-content-left">
-          <img
-            className="form-img"
-            src="images/d2TurboPix.png"
-            alt="dota-team"
-          />
+          <img className="form-img" src={d2TurboImg} alt="dota-team" />
         </div>
         {/* <FormRegister /> */}
         {!isSubmitted ? (

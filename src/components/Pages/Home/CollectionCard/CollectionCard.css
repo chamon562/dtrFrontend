@@ -1,0 +1,49 @@
+.collectionCard {
+  color: white;
+  background-color: #1a1c1e;
+  border-radius: 20px;
+  overflow: hidden;
+  width: 300px;
+  height: 500px;
+  margin-top: 30px;
+  margin: 10px;
+}
+
+.collectionCard > img {
+  width: 100%;
+}
+
+.details {
+  padding: 20px;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: 800;
+}
+.id {
+  color: #a1a5b0;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.rankImage {
+  
+  height: 50px;
+  width: 50px;
+  margin-top: 20px;
+}
+
+.rank {
+  margin-left: 5px;
+  font-weight: 600;
+  margin-top: 30px;
+  font-size: 20px;
+}
+
+.priceContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  object-fit: contain;
+}

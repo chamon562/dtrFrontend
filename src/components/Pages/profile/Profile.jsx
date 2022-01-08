@@ -8,9 +8,13 @@ import { Box } from "@mui/system";
 const Profile = (props) => {
   console.log(props.user.id);
   console.log(props);
+  const [userInfoMDB, setUserInfoMDB] = useState(props.user)
+  console.log(userInfoMDB)
   const [userData, setUserData] = useState([]);
   const [dotaData, setDotaData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [myTurboRank, setMyTurboRank] = useState("")
+
   const myDotaUser = async () => {
     axios
       .get(`/api/players/${props.user.friendId}`, {
@@ -19,7 +23,7 @@ const Profile = (props) => {
         },
       })
       .then((res) => {
-        setDotaData(res.data);
+        setDotaData(res.data.profile);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -38,10 +42,12 @@ const Profile = (props) => {
     }
     return;
   };
+
+  
   useEffect(() => {
     myDotaUser();
     fetchData();
-  }, [setDotaData]);
+  }, [setDotaData, setUserData]);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -51,15 +57,15 @@ const Profile = (props) => {
   return (
     <div style={{ minHeight: " 100vh" }}>
       <Container  maxWidth={"sm"} sx={{ display: "flex", justifyContent: "center", mt: 5 }}  >
-        <img src={dotaData.profile.avatarfull} alt="" />
+        <img src={dotaData.avatarfull} alt="" />
         <Stack direction="column" spacing={2} ml={5}>
-          <h1>{dotaData.profile.personaname}</h1>
+          <h1>{dotaData.personaname}</h1>
           <h1>Tubo Rank: {userData.turboRank}</h1>
         </Stack>
       </Container>
       <Box>
         <Typography>Container 2 dota stats</Typography>
-        <ProfileDotaStateOne userData={userData} />
+        <ProfileDotaStateOne userData={userData} user={userInfoMDB}/>
       </Box>
     </div>
   );

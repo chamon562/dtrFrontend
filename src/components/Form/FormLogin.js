@@ -8,7 +8,7 @@ import { chainPropTypes } from "@mui/utils";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "../../utils/setAuthToken";
 import axios from "axios";
-
+import d2ClassImg from "../../assets/images/d2class.jpg"
 const FormLogin = (props) => {
   console.log(props);
   const [email, setEmail] = useState("");
@@ -49,7 +49,7 @@ const FormLogin = (props) => {
   return (
     <div className="form-container">
       <div className="form-content-left">
-        <img className="form-img" src="images/d2class.jpg" alt="dota-team" />
+        <img className="form-img" src={d2ClassImg} alt="dota-team" />
       </div>
       {/* <FormRegister /> */}
 

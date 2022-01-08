@@ -1,0 +1,104 @@
+.main {
+  /* max-height: 50vh; */
+  /* background-color: black; */
+}
+
+.mainContent {
+  display: flex;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #fff;
+
+}
+
+.heroHighLight {
+  flex: 0.25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2rem;
+}
+
+.heroContainer {
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  margin-right: 20px;
+}
+
+.selectedHero {
+  object-fit: contain;
+  max-width: min(30vw, 40vh);
+  max-height: 30vh;
+}
+
+.heroDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  flex: 0.75;
+  
+}
+
+.title {
+  font-size: 96px;
+  font-weight: 800;
+  text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+ 
+}
+
+.itemNumber {
+  color: #a1a5b0;
+  font-size: 50px;
+}
+
+.owner {
+  display: flex;
+  margin: 50px 0;
+  height: 50px;
+}
+
+.owner > p {
+  margin: 0 5px;
+}
+
+.ownerImageContainer {
+  height: 100px;
+  width: 100px;
+
+  border-radius: 50%;
+  overflow: hidden;
+  object-fit: contain;
+}
+
+.ownerImageContainer > img {
+  height: 100%;
+  width: 100%;
+}
+.ownerDetails {
+  display: flex;
+  align-items: center;
+}
+.ownerNameAndHandle {
+  flex: 1;
+  color: grey;
+  margin: 50px 0 0 10px;
+}
+
+.ownerHandle {
+  color: #00ffff;
+}
+
+.ownerLink {
+  padding: 12px;
+  border-radius: 50px;
+  height: 50px;
+  width: 50px;
+  border: 1px solid #fff;
+  margin: 50px 0 0 20px;
+}
+
+.ownerLink > img {
+  height: 100%;
+  width: 100%;
+}

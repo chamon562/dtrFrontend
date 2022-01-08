@@ -1,0 +1,16 @@
+.heroList {
+    cursor: pointer;
+    display: flex;
+    /* TODO NOT SCROLLING WITH MOUSE */
+    overflow-x: auto ;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid white;
+    
+  }
+  /* make scroll bar doesnt show up */
+  
+  .heroList::-webkit-scrollbar {
+    overflow-y: none;
+    
+  }

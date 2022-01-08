@@ -171,4 +171,75 @@ const Profile = (props) => {
 
 export default Profile;
 
+
+// home search
+<div
+      style={{
+        background:
+          "linear-gradient(90deg,rgb(39, 176, 255) 0%,rgb(0, 232, 236) 100%)",
+        height: "100vh",
+      }}
+    >
+      <Box
+        sx={{
+          textAlign: "center",
+        }}
+      >
+        <Typography sx={{ color: "#fff" }} mt="2" variant="h1">
+          Dota 2 Ranked Turbo
+        </Typography>
+        <Container fixed maxWidth="sm">
+          <FormGroup>
+            <TextField
+              id="standard-basic"
+              label="Friend ID"
+              variant="standard"
+              value={searchValue}
+              onChange={handleSearchInput}
+              type="text"
+            />
+            <Button variant="outlined" onClick={callSearch} type="submit">
+              Submit
+            </Button>
+            <p>Enter Friend Id to check rank</p>
+            {
+              <Typography
+                variant="h2"
+                sx={{
+                  color: "#fff",
+                  textShadow: "6px 6px 0px rgba(0,0,0,0.2)",
+                }}
+              >
+                {props.searchData.name}
+              </Typography>
+            }
+            {props.searchData.turboRank ? (
+              <Typography
+                variant="h4"
+                sx={{ textShadow: "6px 6px 0px rgba(0,0,0,0.2)" }}
+              >
+                Turbo Rating
+                <Typography variant="h3" sx={{ color: "#C0C0C0" }}>
+                  {props.searchData.turboRank}
+                </Typography>
+              </Typography>
+            ) : props.searchData === "" ? (
+              <Typography variant="h4" sx={{ color: "red" }}>
+                This Person does not have a Rank turbo account.
+              </Typography>
+            ) : (
+              <div></div>
+            )}
+          </FormGroup>
+        </Container>
+        <img
+          style={{ height: "450px", borderRadius: "10px" }}
+          src="images/turboLogo.gif"
+          alt=""
+        />
+
+        {/* if the searchValue is blank send back friend id not found maybe else return the user info */}
+        {/* <CssBaseline /> */}
+      </Box>
+    </div>
 ```
