@@ -29,25 +29,6 @@ router.get("/path/:friendId", (req, res) => {
 });
 ```
 
-# code save
-
-- backend/routes/users.js
-  - register route save later
-  ```js
-  const friendIdExist = db.User.findOne({ friendId: req.body.friendId });
-  if (friendIdExist) {
-    return res
-      .status(400)
-      .json(
-        "Someone has already registered this Friend ID, are you sure this ID belongs"
-      );
-  }
-  ```
-
-## form idea
-
-1. https://www.youtube.com/watch?v=
-
 # Road Bloccs
 
 ## CORS ERROR preflight stuck on three days FIXED
@@ -170,9 +151,22 @@ const Profile = (props) => {
 };
 
 export default Profile;
+```
 
+##  Code Save
 
-// home search
+- backend/routes/users.js
+- register route save later
+```js
+  const friendIdExist = db.User.findOne({ friendId: req.body.friendId });
+  if (friendIdExist) {
+    return res
+      .status(400)
+      .json(
+        "Someone has already registered this Friend ID, are you sure this ID belongs"
+      );
+  }
+
 <div
       style={{
         background:
@@ -243,3 +237,6 @@ export default Profile;
       </Box>
     </div>
 ```
+
+## Research for popper updating of Score win losses examples
+- 

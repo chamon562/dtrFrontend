@@ -66,6 +66,10 @@
 }
 .navMenuItems{
     display: flex;
-    
+    cursor: pointer;
+    color: #007bff;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
 }
 

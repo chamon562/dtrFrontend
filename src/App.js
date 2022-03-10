@@ -18,6 +18,7 @@ import GetDotaApi from "./components/api/GetDotaApi";
 import Main from "./components/Pages/Home/Main/Main";
 import { Typography } from "@mui/material";
 import SearchBar from "./components/SearchBar/SearchBar";
+import SearchPage from "./components/Pages/SearchPage/SearchPage";
 
 const PrivateRoute = ({ children }) => {
   console.log("😁", children);
@@ -42,7 +43,7 @@ function App() {
         setError(error);
       });
   };
-
+console.log(searchData)
   // useEffect(()=>{
 
   //   axios
@@ -106,7 +107,7 @@ function App() {
   };
   return (
     <div className="main">
-      <Navbar handleLogout={handleLogout} isAuth={isAuthenticated} />
+      <Navbar handleLogout={handleLogout} isAuth={isAuthenticated} search={search} searchData={searchData}/>
 
       <div>
         <Routes>
@@ -114,6 +115,7 @@ function App() {
             element={<Home search={search} searchData={searchData} />}
             path="/"
           />
+          <Route element={<SearchPage />} path="/searchPage"/>
           <Route path="/about" element={<About />} />
           <Route path="/register" element={<Form />} />
           <Route

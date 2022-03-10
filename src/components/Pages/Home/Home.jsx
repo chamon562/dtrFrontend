@@ -36,14 +36,15 @@ const Home = (props) => {
   }, []);
 
   console.log(heroListData);
-  const handleSearchInput = (e) => {
-    setSearchValue(e.target.value);
-  };
 
-  const callSearch = (e) => {
-    e.preventDefault();
-    props.search(searchValue);
-  };
+  // const handleSearchInput = (e) => {
+  //   setSearchValue(e.target.value);
+  // };
+
+  // const callSearch = (e) => {
+  //   e.preventDefault();
+  //   props.search(searchValue);
+  // };
   return (
     <div className="home">
       <div className="mainTitle">

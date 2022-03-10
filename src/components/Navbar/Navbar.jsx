@@ -13,9 +13,25 @@ import HomeIcon from "@mui/icons-material/Home";
 import rankTurboLogo from "../../assets/images/turboLogo.gif";
 import "./Navbar.css";
 import searchIcon from "../../assets/images/search.png";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import { fontSize } from "@mui/system";
+import SearchPage from "../Pages/SearchPage/SearchPage";
 const Navbar = (props) => {
   // if scrollY setActive to true
+  console.log(props);
   const [navActive, setNavActive] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+
+  // the search is working and is logging data when clicking the search icon. but pauses in debugger
+  const handleSearchInput = (e) => {
+    setSearchValue(e.target.value);
+  };
+
+  const callSearch = (e) => {
+    e.preventDefault();
+    props.search(searchValue);
+  };
+
   return (
     <nav className="navbar active">
       {/* logo */}
@@ -30,9 +46,25 @@ const Navbar = (props) => {
           className="searchInput"
           type="text"
           placeholder="Search Friend ID..."
+          onChange={handleSearchInput}
         />
         <div className="searchIconContainer">
-          <img src={searchIcon} alt="" />
+          {/* TODO onClick is making it not redirect to searchPage 
+            this page idea would be to redirect the user to another page 
+            displaying the searched user data name and rank only
+            create a benifit for unsigned users to sign up so they gain more info
+          */}
+          {/* 
+            code example saying if the the state is greater than 0 then and only then <Redirect to={{pathname: "/searchpage"}} />
+          {this.state.results.length > 0 &&
+          <Redirect to={{
+            pathname: '/results',
+            state: { results: this.state.results }
+          }}/> */}
+
+          <Link  to="/searchPage">
+            <img  src={searchIcon} alt="" />
+          </Link>
         </div>
       </div>
       <div className="navMenu">
@@ -46,18 +78,10 @@ const Navbar = (props) => {
         </ul>
         {props.isAuth ? (
           <ul className="navMenuItems">
-            <li>
-              <span
-                
-                onClick={props.handleLogout}
-                
-              >
-                Logout
-              </span>
-            </li>
+            <li onClick={props.handleLogout}>Logout</li>
             <li>
               <NavLink to="/profile">
-                <FaceIcon />
+                <AccountBoxIcon sx={{ fontSize: 40 }} />
               </NavLink>
             </li>
           </ul>
